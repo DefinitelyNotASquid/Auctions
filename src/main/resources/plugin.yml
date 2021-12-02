@@ -1,0 +1,85 @@
+main: com.mith.Auctions.Auctions
+name: Auctions
+version: 4.0.0
+api-version: 1.18
+authors: [Mithrillia]
+load: POSTWORLD
+description: A text-based auction plugin
+softdepend: [Vault, UnicodeApi]
+
+commands:
+  auction:
+    description: Auctions command
+    aliases: [auctions, auction, auc]
+  bid:
+    description: Bid on an auction
+    aliases: [b]
+
+permissions:
+  auctions.*:
+    default: op
+    description: All commands
+    children:
+      auctions.admin: true
+      auctions.player: true
+  auctions.admin:
+    default: false
+    children:
+      auctions.auction.cancel.others: true
+      auctions.auction.impound: true
+      auctions.auction.blacklist: true
+      auctions.auction.enable: true
+      auctions.auction.disable: true
+      auctions.auction.reload: true
+      auctions.updatemessage: true
+  auctions.player:
+    default: true
+    children:
+      auctions.auction: true
+      auctions.auction.start: true
+      auctions.auction.start.sealed: true
+      auctions.auction.cancel: true
+      auctions.auction.average: true
+      auctions.auction.info: true
+      auctions.auction.queue: true
+      auctions.auction.remove: true
+      auctions.auction.spam: true
+      auctions.auction.ignore: true
+      auctions.auction.ignore.player: true
+      auctions.bid: true
+  auctions.auction:
+    default: false
+  auctions.auction.average:
+    default: false
+  auctions.auction.blacklist:
+    default: false
+  auctions.auction.start:
+    default: false
+  auctions.auction.start.sealed:
+    default: false
+  auctions.auction.cancel:
+    default: false
+  auctions.auction.cancel.others:
+    default: false
+  auctions.auction.info:
+    default: false
+  auctions.auction.queue:
+    default: false
+  auctions.auction.remove:
+    default: false
+  auctions.auction.spam:
+    default: false
+  auctions.auction.ignore:
+    default: false
+  auctions.auction.ignore.player:
+    default: false
+  auctions.auction.impound:
+    default: false
+  auctions.auction.enable:
+    default: false
+  auctions.auction.disable:
+    default: false
+  auctions.auction.reload:
+    default: false
+  auctions.bid:
+    default: false

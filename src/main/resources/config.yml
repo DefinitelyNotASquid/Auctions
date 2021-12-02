@@ -1,0 +1,132 @@
+###############################################################################
+#                                                                             #
+#       ###    ##     ##  ######  ######## ####  #######  ##    ##  ######    #
+#      ## ##   ##     ## ##    ##    ##     ##  ##     ## ###   ## ##    ##   #
+#    ##     ## ##     ## ##          ##     ##  ##     ## ## ## ##  ######    #
+#    ######### ##     ## ##          ##     ##  ##     ## ##  ####       ##   #
+#    ##     ## ##     ## ##    ##    ##     ##  ##     ## ##   ### ##    ##   #
+#    ##     ##  #######   ######     ##    ####  #######  ##    ##  ######    #
+#                                                                             #
+###############################################################################
+general:
+  # Time between auctions (in seconds)
+  time-between: 30
+  # Players cannot do /auc cancel when the auction time is under this
+  minimum-cancel-time: 20
+  # What is the maximum amount of auctions that can be in the queue
+  auction-queue-limit: 15
+  # what is the individual player limit for queued auctions (set to 0 for infinite queue)
+  auction-player-queue-limit: 3
+  # Enable custom Icon Support Note: you must have the server side resource pack installed other wise you will see chinese.
+  # Because of the way this works, when enabled you will need to set the {6} optional parameter in the message properties
+  # For the main auction info display, and the Auction queue display.
+  custom-icon: true
+
+auctions:
+  # Worlds that you cannot start auctions in
+  blocked-worlds:
+    - 'paintball'
+    - 'providence_nether'
+    - 'providence_the_end'
+
+  # Materials that cannot be auctions
+  # List of valid materials: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+  blocked-materials:
+    - ''
+
+  # When should we broadcast the time left in the auction?
+  broadcast-times: [30, 15, 3, 2, 1]
+
+  fees:
+    # The price it costs to start an auction (set to 0 for no price)
+    start-price: 0
+    # The amount of money that is removed from the final bid
+    # Ex: Final bid is $500, tax is 20%; the auction starter only receives $400 (set to 0 for no tax)
+    tax-percent: 10
+    # Put the UUID here for the user you wish to have the tax deposited to, if no UUID is present tax will not go to any
+    # user but will instead be left to the void. - Mith's uuid for example a6b8d25f-730f-40f4-a9c1-0b0774994fe8
+    tax-deposit-uuid: "ecb85989-3a9e-4b88-8a71-1dd36c47b628"
+
+  # Should only have "true" or false"
+  toggles:
+    # When set to true, the custom item name will be used instead of the minecraft item name when available
+    display-custom-name: true
+
+    # Should we broadcast the owner of the head if it is a player head?
+    broadcast-head: false
+
+    # Should we broadcast how much xp it costs to repair an auctioned item?
+    broadcast-repair: true
+
+    # Should we broadcast if the item has a cosmetic tag or not
+    broadcast-cosmetic: false
+
+    # Should we allow players to specify autobuys?
+    autobuy: true
+
+    # Should we restrict players to start auctions with items that are damaged?
+    restrict-damaged: false
+
+    # Should we allow decimals in these prices? Ex: $5.64
+    decimal:
+      starting-price: false
+      increment: false
+      autobuy: false
+      bid: false
+
+  # Default uses for commands if players specify nothing
+  default:
+    # In seconds
+    auction-time: 30
+    increment: 100
+    # 0 is disabled
+    autobuy: 0
+
+  # If you want to disable player modification, set minimum & maximum to -1
+  # If you want there to be no maximum set that specific key to 0
+
+  minimum:
+    auction-time: -1
+    increment: 100
+    # The minimum here will be $0
+    autobuy: 100
+
+  maximum:
+    auction-time: -1
+    increment: 10000
+    autobuy: 10000000
+    # How many times can a player bid in a row before someone else bids?
+    consecutive-bids: 3
+    # The maximum price an auction can be.
+    price: 500000
+
+# They use the same settings as auctions
+sealed-auctions:
+  # Should we enable sealed auctions (bids don't show in chat)
+  enabled: false
+  # How many times should a player be allowed to bid?
+  max-bids: 1
+
+# Anti-snipe is to stop players from bidding last-second and winning
+antisnipe:
+  enabled: true
+  # The last X seconds which should be considered a snipe and have anti-snipe run
+  seconds-for-start: 3
+  # How many times can the anti-snipe run before cancelling?
+  run-times: 3
+  # How much time should be added when anti-snipe is run?
+  time: 5
+
+# Blocked Item Names, if any of these words are found in the lore name it will not be able to be auctioned
+blocked-item-names:
+  #Will confiscate and destroy the item for the user, be careful of false positives!
+  destroy-on-detect: true
+  #Naughty word list, add more here but be careful of false positives!
+  swearlist:
+    - "fuck"
+    - "shit"
+    - "titty"
+    - "penis"
+    - "vagina"
+    - "cunt"
+    - "dick"
