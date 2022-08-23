@@ -1,6 +1,6 @@
 main: com.mith.Auctions.Auctions
 name: Auctions
-version: 4.0.1
+version: 4.0.2
 api-version: 1.19
 authors: [Mithrillia]
 load: POSTWORLD
